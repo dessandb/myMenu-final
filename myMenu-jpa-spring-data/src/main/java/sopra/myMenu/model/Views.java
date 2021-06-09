@@ -26,5 +26,10 @@ public class Views {
 	
 	public static class ViewAjustementQuantite extends ViewCommon{}
 	
+	public static class ViewPlanning extends ViewCommon{}
+	
+	public static class ViewPlanningWithObjectif extends ViewPlanning{}
+	
+	public static class ViewPlanningWithUtilisateur extends ViewPlanning{}
 	
 }
