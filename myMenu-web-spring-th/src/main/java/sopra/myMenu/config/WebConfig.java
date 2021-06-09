@@ -1,4 +1,4 @@
-package sopra.formation.config;
+package sopra.myMenu.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +14,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("sopra.formation.web")
+@ComponentScan("sopra.myMenu.web")
 public class WebConfig implements WebMvcConfigurer {
 
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

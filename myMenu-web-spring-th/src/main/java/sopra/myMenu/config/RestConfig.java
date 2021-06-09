@@ -1,4 +1,4 @@
-package sopra.formation.config;
+package sopra.myMenu.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("sopra.formation.rest")
+@ComponentScan("sopra.myMenu.rest")
 public class RestConfig {
 
 }
