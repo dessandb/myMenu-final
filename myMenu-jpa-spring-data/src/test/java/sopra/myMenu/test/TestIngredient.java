@@ -315,10 +315,10 @@ public class TestIngredient {
 	ing3 = ingRepo.save(ing3);
 		
 	
-	List<Ingredient> ingredientsParSaison  =  ingRepo.findByTypeProduit(TypeProduit.VIANDE);
+	List<Ingredient> ingredientsParProduit  =  ingRepo.findByTypeProduit(TypeProduit.VIANDE);
 	try {
 		
-		Assert.assertEquals(ing1.getId(), ingredientsParSaison.get(0).getId());
+		Assert.assertEquals(ing1.getId(), ingredientsParProduit.get(0).getId());
 				
 	}finally {
 	ingRepo.delete(ing1);

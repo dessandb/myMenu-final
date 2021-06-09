@@ -13,6 +13,6 @@
 	<mvc:annotation-driven/>
 	
 	<!-- Scanner le(s) package(s) où se situe(nt) les RestController -->
-	<context:component-scan base-package="sopra.formation.rest"/>
+	<context:component-scan base-package="sopra.myMenu.rest"/>
 
 </beans>
