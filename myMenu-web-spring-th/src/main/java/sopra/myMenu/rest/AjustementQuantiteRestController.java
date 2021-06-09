@@ -53,11 +53,7 @@ public class AjustementQuantiteRestController {
 
 	@PostMapping("")
 	@JsonView(Views.ViewAjustementQuantite.class)
-	public AjustementQuantite create(@Valid @RequestBody AjustementQuantite ajustement, BindingResult result) {
-		if (result.hasErrors()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erreur validation");
-		}
-
+	public AjustementQuantite create(@RequestBody AjustementQuantite ajustement) {
 		ajustement = ajustementRepo.save(ajustement);
 
 		return ajustement;

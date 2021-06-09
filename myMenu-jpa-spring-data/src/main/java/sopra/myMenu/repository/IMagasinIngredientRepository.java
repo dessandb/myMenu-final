@@ -11,7 +11,7 @@ import sopra.myMenu.model.MagasinIngredient;
 public interface IMagasinIngredientRepository extends JpaRepository<MagasinIngredient, Long>{
 
 	@Query("select e from MagasinIngredient e ORDER BY e.prix ASC")
-	List<MagasinIngredient> findByRisingPrice();
+	List<MagasinIngredient> findAllByRisingPrice();
 	
 	@Query("select e from MagasinIngredient e where e.bio=true")
 	List<MagasinIngredient> findAllBio();

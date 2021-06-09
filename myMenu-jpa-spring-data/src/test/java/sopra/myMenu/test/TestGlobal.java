@@ -9,8 +9,8 @@ public class TestGlobal {
 		tb.utilisateurAdressePreferenceAlimentaireFindall();
 		tb.utilisateurAdressePreferenceAlimentaireDelete();
 		
-		TestCamille tc = new TestCamille();  
-		tc.magasinIngredientCreate();
+		TestCamille tc = new TestCamille(); 
+		tc.magasinIngredientCreate(); 
 		tc.magasinIngredientDelete();
 		tc.magasinIngredientFindAll();
 		tc.magasinIngredientUpdate();
