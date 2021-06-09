@@ -14,20 +14,27 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="Magasin")
 public class Magasin {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(name = "nom")
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Column(name = "siret")
+	@JsonView(Views.ViewCommon.class)
 	private String siret;	
 	@ManyToOne
 	@JoinColumn(name = "MagasinIngredient_id") 
+	@JsonView(Views.ViewMagasinWithMagasinIngredient.class)
 	private MagasinIngredient magasinIngredient;
 	@OneToMany(mappedBy="magasin")
 	private List<Adresse> adresses=new ArrayList<Adresse>();
