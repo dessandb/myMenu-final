@@ -16,8 +16,6 @@ public class Views {
 	
 	public static class ViewPreferenceAlimentaireWithUtilisateur extends ViewPreferenceAlimentaire {}
 	
-
-	public static class ViewCommon{}
 	
 	public static class ViewListeCourse extends ViewCommon{}
 	
@@ -26,4 +24,13 @@ public class Views {
 	public static class ViewMagasin extends ViewCommon{}
 	
 	public static class ViewMagasinWithMagasinIngredient extends ViewMagasin{}
+	
+	public static class ViewIngredient extends ViewCommon{}
+	
+	public static class ViewPlat extends ViewCommon{}
+	
+	public static class ViewRecette extends ViewCommon{}
+	
+	
+	
 }

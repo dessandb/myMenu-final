@@ -13,7 +13,7 @@
 	<mvc:annotation-driven validator="validator"/>
 	
 	<!-- Scanner le(s) package(s) où se situe(nt) les Controller -->
-	<context:component-scan base-package="sopra.formation.web"/>
+	<context:component-scan base-package="sopra.myMenu.rest"/>
 	
 	<!-- Configuration d'une exclusion sur les urls ...../css/*** vers un répertoire physique -->
 	<mvc:resources mapping="/css/**" location="/css/"/>
