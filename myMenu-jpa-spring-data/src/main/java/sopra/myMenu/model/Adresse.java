@@ -11,31 +11,42 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "adresse")
 public class Adresse {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(name = "Rue")
+	@JsonView(Views.ViewCommon.class)
 	private String rue;
 	@Column(name = "Complement")
+	@JsonView(Views.ViewCommon.class)
 	private String complement;
 	@Column(name = "CodePostal")
+	@JsonView(Views.ViewCommon.class)
 	private String codePostal;
 	@Column(name = "Ville")
+	@JsonView(Views.ViewCommon.class)
 	private String ville;
 	@Column(name = "Pays")
+	@JsonView(Views.ViewCommon.class)
 	private String pays;
 	@Embedded
 	private Coordonnees coordonnees;
 	@ManyToOne
 	@JoinColumn(name = "Utilisateur_Id")
+	@JsonView(Views.ViewAdresseWithUtilisateur.class)
 	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name = "Magasin_Id")
+	@JsonView(Views.ViewAdresseWithMagasin.class)
 	private Magasin magasin;
 	
 	public Adresse() {

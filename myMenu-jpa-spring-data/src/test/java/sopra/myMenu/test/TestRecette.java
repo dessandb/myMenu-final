@@ -7,10 +7,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
+import sopra.myMenu.model.Ingredient;
+import sopra.myMenu.model.ProduitSaison;
 import sopra.myMenu.model.Recette;
 import sopra.myMenu.model.TypeAlimentation;
-
+import sopra.myMenu.model.TypeProduit;
+import sopra.myMenu.repository.IIngredientRepository;
 import sopra.myMenu.repository.IRecetteRepository;
 
 
@@ -31,19 +33,19 @@ public class TestRecette {
 		rec1 = recRepo.save(rec1);
 		
 		Recette recFind = recRepo.findById(rec1.getId()).get();
-		
+		try {
 		Assert.assertEquals("couscous", recFind.getNom());
 		Assert.assertEquals( "mettre les legumes et le poulet", recFind.getEtapes());
 		Assert.assertEquals( 5, recFind.getNombrePers());
 		Assert.assertEquals(800, recFind.getTotalCalories());
 		Assert.assertEquals(TypeAlimentation.HALAL, recFind.getTypeRecette());
 		
-		
+		}finally {
 						
 		recRepo.delete(rec1);
 		
 		context.close();
-	}
+	}}
 	
 	@Test	
 	public void RecetteUpdate() {
@@ -66,17 +68,17 @@ public class TestRecette {
 			
 		rec1 = recRepo.save(rec1);
 		Recette recFind = recRepo.findById(rec1.getId()).get();
-		
+		try {
 		Assert.assertEquals("tartiflette", recFind.getNom());
 		Assert.assertEquals( "patate et reblochon", recFind.getEtapes());
 		Assert.assertEquals( 8, recFind.getNombrePers());
 		Assert.assertEquals(500, recFind.getTotalCalories());
 		Assert.assertEquals(TypeAlimentation.NONE, recFind.getTypeRecette());
-		
+		}finally {
 				
 		recRepo.delete(rec1);
 		context.close();
-	}
+	}}
 	
 	@Test
 	public void RecetteFindAll() {
@@ -97,16 +99,16 @@ public class TestRecette {
 			
 		
 		List<Recette> recettes = recRepo.findAll();
-		
+		try {
 		Assert.assertEquals(3, recettes.size());
-		
+		}finally {
 		recRepo.delete(rec1);
 		recRepo.delete(rec2);
 		recRepo.delete(rec3);
 			
 		context.close();
 	}
-	
+	}
 
 	@Test
 	public void RecetteDelete() {
@@ -129,7 +131,7 @@ public class TestRecette {
 		List<Recette> recettes = recRepo.findAll();
 		
 		Assert.assertEquals(3, recettes.size());
-		
+	
 		recRepo.delete(rec1);
 		recRepo.delete(rec2);
 		recRepo.delete(rec3);
@@ -189,9 +191,66 @@ rec3 = recRepo.save(rec3);
 		Assert.assertEquals(rec1.getId(), recettesParNom.get(0).getId());
 	} finally {
 		recRepo.delete(rec1);
+		recRepo.delete(rec2);
+		recRepo.delete(rec3);
 	}
+	}
+	@Test
+	public void findByRisingNote() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:application-context.xml");
+		IRecetteRepository recRepo = context.getBean(IRecetteRepository.class);
 
+		Recette rec1 = new Recette("couscous", "mettre les legumes et le poulet", 5, 200,3F, TypeAlimentation.HALAL);
+		
+	Recette rec2 = new Recette("tartiflette", "patate et reblochon", 5, 800,5F, TypeAlimentation.NONE);
+
+	Recette rec3 = new Recette("couscous", "mettre les legumes et le poulet", 5, 10,2F, TypeAlimentation.HALAL);
+
+	rec1 = recRepo.save(rec1);
+	rec2 = recRepo.save(rec2);
+	rec3 = recRepo.save(rec3);
+
+
+	List<Recette> recettesParNote = recRepo.findByRisingNote();
+	try {
+		Assert.assertEquals(rec1.getId(), recettesParNote.get(1).getId());
+		Assert.assertEquals(rec2.getId(), recettesParNote.get(2).getId());
+		Assert.assertEquals(rec3.getId(), recettesParNote.get(0).getId());
+	}finally{
+		recRepo.delete(rec1);
+		recRepo.delete(rec2);
+		recRepo.delete(rec3);
+	}
+	
 }
+	@Test
+	public void findByTypeAlimentation() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:application-context.xml");
+		IRecetteRepository recRepo = context.getBean(IRecetteRepository.class);
+
+		Recette rec1 = new Recette("couscous", "mettre les legumes et le poulet", 5, 200,3F, TypeAlimentation.HALAL);
+		
+	Recette rec2 = new Recette("tartiflette", "patate et reblochon", 5, 800,5F, TypeAlimentation.NONE);
+
+	Recette rec3 = new Recette("tartiflette", "patate et reblochon", 5, 800,2F, TypeAlimentation.NONE);
+
+	rec1 = recRepo.save(rec1);
+	rec2 = recRepo.save(rec2);
+	rec3 = recRepo.save(rec3);
+
+
+	List<Recette> recettesPartypalim = recRepo.findByTypeAlimentation(TypeAlimentation.HALAL);
+	try {
+		Assert.assertEquals(rec1.getId(), recettesPartypalim.get(0).getId());
+		
+	}finally{
+		recRepo.delete(rec1);
+		recRepo.delete(rec2);
+		recRepo.delete(rec3);
+	}
+	
+}
+	
 }
 
 

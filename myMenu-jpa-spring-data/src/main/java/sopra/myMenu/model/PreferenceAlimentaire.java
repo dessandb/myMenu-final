@@ -11,18 +11,24 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "preference_alimentaire")
 public class PreferenceAlimentaire {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewCommon.class)
 	private TypeAlimentation typeAlimentation;
 	@ManyToOne
 	@JoinColumn(name = "Utilisateur_Id")
+	@JsonView(Views.ViewPreferenceAlimentaireWithUtilisateur.class)
 	private Utilisateur utilisateur;
 	
 	public PreferenceAlimentaire() {
