@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -56,8 +55,8 @@ public class AdresseRestController {
 	}
 	
 	@GetMapping("/{id}/detail-magasin")
-	@JsonView(Views.ViewAdresse.class)
-	public Adresse detailMagasin(@Param("id") Long id) {
+	@JsonView(Views.ViewAdresseWithMagasin.class)
+	public Adresse detailMagasin(@PathVariable Long id) {
 
 		Optional<Adresse> optAdresse= adresseRepo.findByIdWithMagasin(id);
 		
@@ -79,15 +78,15 @@ public class AdresseRestController {
 	}
 	
 	@GetMapping("/with-utilisateur")
-	@JsonView(Views.ViewAdresse.class)
+	@JsonView(Views.ViewAdresseWithUtilisateur.class)
 	public List<Adresse> findAllWithUtilisateur() {
 
 		return adresseRepo.findAllWithUtilisateur();
 	}
 	
 	@GetMapping("/{id}/detail-utilisateur")
-	@JsonView(Views.ViewAdresse.class)
-	public Adresse detailUtilisateur(@Param("id") Long id) {
+	@JsonView(Views.ViewAdresseWithUtilisateur.class)
+	public Adresse detailUtilisateur(@PathVariable Long id) {
 
 		Optional<Adresse> optAdresse= adresseRepo.findByIdWithUtilisateur(id);
 		
