@@ -85,6 +85,7 @@ public class UtilisateurRestController {
 	}
 	
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur find(@PathVariable Long id) {
 
 		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findById(id);
@@ -97,6 +98,7 @@ public class UtilisateurRestController {
 	}
 	
 	@PostMapping("")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur create(@Valid @RequestBody Utilisateur utilisateur, BindingResult result) {
 		if (result.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erreur validation");
@@ -108,6 +110,7 @@ public class UtilisateurRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur update(@RequestBody Utilisateur utilisateur, @PathVariable Long id) {
 		if (!utilisateurRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
