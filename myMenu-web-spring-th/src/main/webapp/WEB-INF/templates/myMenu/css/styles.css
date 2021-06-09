@@ -40,6 +40,13 @@ header {
 	width: 100%;
 	top: 40%;
 }
+/* -------------------------------------------------------------- couleurs de texte */
+.green{
+	color: #75BB21;
+}
+.orange{
+	color: #E8833A;
+}
 
 /* -------------------------------------------------------------- Bootstrap redesign voir SCSS pour plustard */
 
