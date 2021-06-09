@@ -48,7 +48,7 @@ public class AdresseRestController {
 	}
 	
 	@GetMapping("/with-magasin")
-	@JsonView(Views.ViewAdresse.class)
+	@JsonView(Views.ViewAdresseWithMagasin.class)
 	public List<Adresse> findAllWithMagasin() {
 
 		return adresseRepo.findAllWithMagasin();
@@ -99,6 +99,7 @@ public class AdresseRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewAdresse.class)
 	public Adresse find(@PathVariable Long id) {
 
 		Optional<Adresse> optAdresse = adresseRepo.findById(id);
@@ -125,6 +126,7 @@ public class AdresseRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewAdresse.class)
 	public Adresse create(@Valid @RequestBody Adresse adresse, BindingResult result) {
 		if (result.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erreur validation");
@@ -136,6 +138,7 @@ public class AdresseRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewAdresse.class)
 	public Adresse update(@RequestBody Adresse adresse, @PathVariable Long id) {
 		if (!adresseRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");

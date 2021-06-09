@@ -14,7 +14,7 @@ public interface IAdresseRepository extends JpaRepository<Adresse,Long> {
 	@Query("select a from Adresse a where a.magasin.id = :idMagasin")
 	List<Adresse> findAllByMagasin(@Param("idMagasin") Long idMagasin);
 	
-	@Query("select a from Adresse a left join fetch a.magasin")
+	@Query("select a from Adresse a left join fetch a.magasin where a.magasin IS NOT NULL")
 	List<Adresse> findAllWithMagasin();
 	
 	@Query("select a from Adresse a left join fetch a.magasin where a.id = :id")
@@ -23,7 +23,7 @@ public interface IAdresseRepository extends JpaRepository<Adresse,Long> {
 	@Query("select  a from Adresse a where a.utilisateur.id = :idUtilisateur")
 	List<Adresse> findAllByUtilisateur(@Param("idUtilisateur") Long idUtilisateur);
 	
-	@Query("select  a from Adresse a left join fetch a.utilisateur")
+	@Query("select  a from Adresse a left join fetch a.utilisateur where a.utilisateur IS NOT NULL")
 	List<Adresse> findAllWithUtilisateur();
 	
 	@Query("select  a from Adresse a left join fetch a.utilisateur where a.id = :id")
