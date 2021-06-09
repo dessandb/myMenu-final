@@ -28,25 +28,33 @@ public class Recette {
 	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(name = "nom")
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Column(name = "etapes")
+	@JsonView(Views.ViewCommon.class)
 	private String etapes;
 	@Column(name = "nombre_pers")
+	@JsonView(Views.ViewCommon.class)
 	private int nombrePers;
+	 
 	@Column(name = "total_calories")
+	@JsonView(Views.ViewRecette.class)
 	private int totalCalories;
 	@Column(name = "note")
+	@JsonView(Views.ViewRecette.class)
 	private float note;
 	@Enumerated(EnumType.STRING)
-	
+	@JsonView(Views.ViewRecette.class)
 	private TypeAlimentation typeAlimentation;
 	
 	@ManyToMany(mappedBy="recettes")
 	@JsonIgnore
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 	@OneToOne(mappedBy= "recette")
+	@JsonIgnore
 	private Plat plat;
 	public Recette() {
 		super();
