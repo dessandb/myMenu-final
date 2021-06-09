@@ -1,4 +1,4 @@
-package sopra.formation.rest;
+package sopra.myMenu.rest;
 
 import java.util.List;
 import java.util.Optional;
