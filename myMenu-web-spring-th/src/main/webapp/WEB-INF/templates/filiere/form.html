@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>Edition de la filière</title>
+</head>
+<body>
+	<section layout:fragment="monContenu">
+		<form th:action="@{/filiere/save}" method="post">
+			<input type="hidden" name="id" th:value="${maFiliere.id}"> <input
+				type="hidden" name="version" th:value="${maFiliere.version}">
+			<div id="matiereForm" class="card mt-3">
+				<div class="card-header bg-info text-white">
+					<h3>Edition de la filière</h3>
+				</div>
+				<div class="card-body">
+					<div class="form-group">
+						<label for="intitule">Intitulé:</label> <input type="text"
+							class="form-control" id="intitule" name="intitule"
+							th:value="${maFiliere.intitule}">
+						<span class="text-danger" th:errors="${maFiliere.intitule}"></span>
+					</div>
+					<div class="form-group">
+						<label for="promotion">Promotion:</label> <input type="text"
+							class="form-control" id="promotion" name="promotion"
+							th:value="${maFiliere.promotion}">
+						<span class="text-danger" th:errors="${maFiliere.promotion}"></span>
+					</div>
+					<div class="form-group">
+						<label for="dtDebut">Date de début:</label> <input type="date"
+							class="form-control" id="dtDebut" name="dtDebut"
+							th:value="${maFiliere.dtDebut}">
+						<span class="text-danger" th:errors="${maFiliere.dtDebut}"></span>
+					</div>
+					<div class="form-group">
+						<label for="duree">Durée:</label> <input type="number"
+							class="form-control" id="duree" name="duree"
+							th:value="${maFiliere.duree}">
+						<span class="text-danger" th:errors="${maFiliere.duree}"></span>
+					</div>
+					<div class="form-group">
+						<label for="dispositif">Dispositif:</label> <select
+							id="dispositif" name="dispositif" class="form-control">
+							<option th:each="dispo : ${dispositifs}" th:value="${dispo}"
+								th:selected="${maFiliere.dispositif eq dispo}">[[${dispo.label}]]</option>
+
+						</select>
+						<span class="text-danger" th:errors="${maFiliere.dispositif}"></span>
+					</div>
+					<div class="form-group">
+						<label for="referentId">Référent:</label> <select id="referentId"
+							name="referentId" class="form-control">
+							<option value="">Veuillez sélectionner un formateur</option>
+							<option th:each="formateur : ${formateurs}" th:value="${formateur.id}" th:text="${formateur.prenom + ' ' + formateur.nom}"
+							 		th:selected="${maFiliere.referent?.id eq formateur.id}"></option>
+
+						</select>
+						<span class="text-danger" th:errors="${maFiliere.referent}"></span>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="btn-group btn-group-lg float-right">
+						<button type="submit" class="btn btn-success">
+							<i class="fa fa-check"></i>
+						</button>
+						<a th:href="@{/filiere/cancel}" class="btn btn-warning"> <i
+							class="fa fa-undo"></i>
+						</a>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</section>
+</body>
+</html>

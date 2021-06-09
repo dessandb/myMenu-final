@@ -1,4 +1,4 @@
-package sopra.formation.rest;
+package sopra.myMenu.rest;
 
 import java.util.List;
 import java.util.Map;
@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopra.formation.model.Evaluation;
 import sopra.formation.model.Views;
 import sopra.formation.repository.IEvaluationRepository;
-import sopra.formation.rest.exception.EvaluationValidationException;
+import sopra.myMenu.rest.exception.EvaluationValidationException;
 
 @RestController
 @RequestMapping("/evaluation")

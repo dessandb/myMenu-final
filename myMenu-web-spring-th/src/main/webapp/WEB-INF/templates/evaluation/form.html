@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>[[#{evaluation.form.titre}]]</title>
+</head>
+<body>
+	<section layout:fragment="monContenu">
+		<form th:action="@{/evaluation/save}" method="post">
+			<input type="hidden" name="id" th:value="${evaluation.id}"> <input
+				type="hidden" name="version" th:value="${evaluation.version}">
+			<div id="matiereForm" class="card mt-3">
+				<div class="card-header bg-info text-white">
+					<h3>[[#{evaluation.form.titreForm}]]</h3>
+				</div>
+				<div class="card-body">
+					<div class="form-group">
+						<label for="comportemental">[[#{evaluation.form.comportemental}]]</label> <input
+							type="number" class="form-control" id="comportemental"
+							name="comportemental" th:value="${evaluation.comportemental}">
+						<span class="text-danger" th:errors="${evaluation.comportemental}"></span>
+					</div>
+					<div class="form-group">
+						<label for="technique">[[#{evaluation.form.technique}]]</label> <input
+							type="number" 	class="form-control" id="technique"
+							name="technique" th:value="${evaluation.technique}">
+						<span class="text-danger" th:errors="${evaluation.technique}"></span>
+					</div>
+					<div class="form-group">
+						<label for="commentaires">[[#{evaluation.form.commentaires}]]</label> <input
+							type="text" 	class="form-control" id="commentaires"
+							name="commentaires" th:value="${evaluation.commentaires}">
+						<span class="text-danger" th:errors="${evaluation.commentaires}"></span>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="btn-group btn-group-lg float-right">
+						<button type="submit" class="btn btn-success">
+							<i class="fa fa-check"></i>
+						</button>
+						<a th:href="@{/evaluation/cancel}" class="btn btn-warning"> <i
+							class="fa fa-undo"></i>
+						</a>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</section>
+</body>
+</html>
