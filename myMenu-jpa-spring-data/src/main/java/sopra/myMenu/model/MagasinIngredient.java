@@ -27,9 +27,9 @@ public class MagasinIngredient {
 	private String marque;
 	@Column(name = "datePeremption")
 	private Date datePeremption;
-	@Column(name = "produitLocal")
+	@Column(name = "produitLocal", columnDefinition = "tinyint(1)" )
 	private Boolean produitLocal;
-	@Column(name = "bio")
+	@Column(name = "bio", columnDefinition = "tinyint(1)" )
 	private Boolean bio;
 	@OneToMany(mappedBy = "magasinIngredient")
 	private List<Magasin> magasins=new ArrayList<Magasin>();
