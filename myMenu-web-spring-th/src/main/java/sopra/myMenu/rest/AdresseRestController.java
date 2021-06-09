@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -49,15 +48,15 @@ public class AdresseRestController {
 	}
 	
 	@GetMapping("/with-magasin")
-	@JsonView(Views.ViewAdresse.class)
+	@JsonView(Views.ViewAdresseWithMagasin.class)
 	public List<Adresse> findAllWithMagasin() {
 
 		return adresseRepo.findAllWithMagasin();
 	}
 	
 	@GetMapping("/{id}/detail-magasin")
-	@JsonView(Views.ViewAdresse.class)
-	public Adresse detailMagasin(@Param("id") Long id) {
+	@JsonView(Views.ViewAdresseWithMagasin.class)
+	public Adresse detailMagasin(@PathVariable Long id) {
 
 		Optional<Adresse> optAdresse= adresseRepo.findByIdWithMagasin(id);
 		
@@ -79,15 +78,15 @@ public class AdresseRestController {
 	}
 	
 	@GetMapping("/with-utilisateur")
-	@JsonView(Views.ViewAdresse.class)
+	@JsonView(Views.ViewAdresseWithUtilisateur.class)
 	public List<Adresse> findAllWithUtilisateur() {
 
 		return adresseRepo.findAllWithUtilisateur();
 	}
 	
 	@GetMapping("/{id}/detail-utilisateur")
-	@JsonView(Views.ViewAdresse.class)
-	public Adresse detailUtilisateur(@Param("id") Long id) {
+	@JsonView(Views.ViewAdresseWithUtilisateur.class)
+	public Adresse detailUtilisateur(@PathVariable Long id) {
 
 		Optional<Adresse> optAdresse= adresseRepo.findByIdWithUtilisateur(id);
 		
@@ -100,6 +99,7 @@ public class AdresseRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewAdresse.class)
 	public Adresse find(@PathVariable Long id) {
 
 		Optional<Adresse> optAdresse = adresseRepo.findById(id);
@@ -126,6 +126,7 @@ public class AdresseRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewAdresse.class)
 	public Adresse create(@Valid @RequestBody Adresse adresse, BindingResult result) {
 		if (result.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erreur validation");
@@ -137,6 +138,7 @@ public class AdresseRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewAdresse.class)
 	public Adresse update(@RequestBody Adresse adresse, @PathVariable Long id) {
 		if (!adresseRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");

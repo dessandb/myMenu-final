@@ -25,6 +25,17 @@ public class Views {
 	
 	public static class ViewMagasinWithMagasinIngredient extends ViewMagasin{}
 	
+	public static class ViewAjustementQuantite extends ViewCommon{}
+	
+	public static class ViewPlanning extends ViewCommon{}
+	public static class ViewMagasinIngredient extends ViewCommon{}
+	
+	public static class ViewPlanningWithObjectif extends ViewPlanning{}
+	
+	public static class ViewPlanningWithUtilisateur extends ViewPlanning{}
+	
+	
+	
 	public static class ViewIngredient extends ViewCommon{}
 	
 	public static class ViewPlat extends ViewCommon{}

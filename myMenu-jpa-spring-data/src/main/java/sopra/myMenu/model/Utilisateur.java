@@ -12,8 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.data.annotation.Version;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonView;
 @Entity
@@ -46,7 +49,9 @@ public class Utilisateur {
 	private String telephone;
 	@OneToMany(mappedBy="utilisateur")
 	private List<PreferenceAlimentaire> preferencesAlimentaires = new ArrayList<PreferenceAlimentaire>();
+	@Temporal(TemporalType.DATE)
 	@Column(name = "Date_Naissance")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@JsonView(Views.ViewCommon.class)
 	private Date dateNaissance;
 	@Enumerated(EnumType.STRING)

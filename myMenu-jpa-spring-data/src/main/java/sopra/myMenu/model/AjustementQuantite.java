@@ -13,15 +13,20 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
-@Table(name="AjustementQuantite")
+@Table(name="ajustementQuantite")
 public class AjustementQuantite {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(name = "quantiteModifiee")
+	@JsonView(Views.ViewCommon.class)
 	private Float quantiteModifiee;
 	@OneToMany(mappedBy = "ajustementQuantite")
 	private List<ListeCourse> listeCourse=new ArrayList<ListeCourse>();
