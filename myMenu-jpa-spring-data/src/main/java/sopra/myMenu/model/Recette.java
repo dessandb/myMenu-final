@@ -15,6 +15,9 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 @Table(name = "recette")
@@ -22,6 +25,7 @@ public class Recette {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
 	private int version;
@@ -40,6 +44,7 @@ public class Recette {
 	private TypeAlimentation typeAlimentation;
 	
 	@ManyToMany(mappedBy="recettes")
+	@JsonIgnore
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 	@OneToOne(mappedBy= "recette")
 	private Plat plat;

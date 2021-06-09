@@ -16,7 +16,7 @@ import org.springframework.data.annotation.Version;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@Table(name="AjustementQuantite")
+@Table(name="ajustementQuantite")
 public class AjustementQuantite {
 	@Id
 	@GeneratedValue

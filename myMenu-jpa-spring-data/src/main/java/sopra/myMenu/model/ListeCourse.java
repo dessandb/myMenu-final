@@ -22,9 +22,9 @@ public class ListeCourse {
 	@Version
 	@JsonView(Views.ViewCommon.class)
 	private int version;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "AjustementQuantite_id") 
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonView(Views.ViewListeCourseWithAjustement.class)
+	@JoinColumn(name = "AjustementQuantite_id") 	
 	private AjustementQuantite ajustementQuantite;
 	
 	public ListeCourse() {

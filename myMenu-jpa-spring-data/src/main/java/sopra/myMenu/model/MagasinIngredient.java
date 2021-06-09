@@ -10,26 +10,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.data.annotation.Version;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name="MagasinIngredient")
 public class MagasinIngredient {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(name = "prix")
+	@JsonView(Views.ViewCommon.class)
 	private Float prix;
 	@Column(name = "marque")
+	@JsonView(Views.ViewCommon.class)
 	private String marque;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "datePeremption")
+	@JsonView(Views.ViewCommon.class)
 	private Date datePeremption;
-	@Column(name = "produitLocal", columnDefinition = "tinyint(1)" )
+	@Column(name = "produitLocal", columnDefinition = "tinyint(1)")
+	@JsonView(Views.ViewCommon.class)
 	private Boolean produitLocal;
-	@Column(name = "bio", columnDefinition = "tinyint(1)" )
+	@Column(name = "bio", columnDefinition = "tinyint(1)")
+	@JsonView(Views.ViewCommon.class)
 	private Boolean bio;
 	@OneToMany(mappedBy = "magasinIngredient")
 	private List<Magasin> magasins=new ArrayList<Magasin>();
