@@ -43,7 +43,7 @@ public class PreferenceAlimentaireRestController {
 	}
 	
 	@GetMapping("/detailUtilisateur")
-	@JsonView(Views.ViewPreferenceAlimentaire.class)
+	@JsonView(Views.ViewPreferenceAlimentaireWithUtilisateur.class)
 	public List<PreferenceAlimentaire> findAllWithUtilisateur() {
 
 		return prefAlimRepo.findAllWithUtilisateur();
@@ -64,6 +64,7 @@ public class PreferenceAlimentaireRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewPreferenceAlimentaire.class)
 	public PreferenceAlimentaire find(@PathVariable Long id) {
 
 		Optional<PreferenceAlimentaire> optPreferenceAlimentaire = prefAlimRepo.findById(id);
@@ -76,6 +77,7 @@ public class PreferenceAlimentaireRestController {
 	}
 	
 	@GetMapping("/{id}/detail-utilisateur")
+	@JsonView(Views.ViewPreferenceAlimentaireWithUtilisateur.class)
 	public PreferenceAlimentaire findByIdWithUtilisateur(@PathVariable Long id) {
 
 		Optional<PreferenceAlimentaire> optPreferenceAlimentaire = prefAlimRepo.findByIdWithUtilisateur(id);
@@ -88,6 +90,7 @@ public class PreferenceAlimentaireRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewPreferenceAlimentaire.class)
 	public PreferenceAlimentaire create(@Valid @RequestBody PreferenceAlimentaire preferenceAlimentaire, BindingResult result) {
 		if (result.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erreur validation");
@@ -99,6 +102,7 @@ public class PreferenceAlimentaireRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewPreferenceAlimentaire.class)
 	public PreferenceAlimentaire update(@RequestBody PreferenceAlimentaire preferenceAlimentaire, @PathVariable Long id) {
 		if (!prefAlimRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");

@@ -18,7 +18,7 @@ public interface IPreferenceAlimentaireRepository extends JpaRepository<Preferen
 	@Query("select distinct p from PreferenceAlimentaire p left join fetch p.utilisateur")
 	List<PreferenceAlimentaire> findAllWithUtilisateur();
 	
-	@Query("select distinct p from PreferenceAlimentaire p where p.utilisateur.id=:idUtilisateur")
+	@Query("select distinct p from PreferenceAlimentaire p where p.utilisateur=:idUtilisateur")
 	List<PreferenceAlimentaire> findAllByUtilisateur(@Param("idUtilisateur") Long idUtilisateur);
 	
 	@Query("select distinct p from PreferenceAlimentaire p left join fetch p.utilisateur where p.id = :id")
