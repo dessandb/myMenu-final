@@ -9,7 +9,7 @@
 	<artifactId>myMenu-jpa-spring-data</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging> <!-- optionnel -->
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -75,6 +75,14 @@
 			<version>8.0.25</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.3.7</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
