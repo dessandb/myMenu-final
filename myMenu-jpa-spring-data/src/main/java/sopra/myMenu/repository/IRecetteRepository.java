@@ -25,9 +25,8 @@ public interface IRecetteRepository extends JpaRepository<Recette, Long>{
 	@Query("select r from Recette r ORDER BY r.note ASC")
 	List<Recette> findByRisingNote();
 
-	@Query("select t from Recette r where r.typeAlimentation= :typeAlimentation")
+	@Query("select r from Recette r where r.typeAlimentation= :typeAlimentation")
 	List<Recette> findByTypeAlimentation(@Param("typeAlimentation")TypeAlimentation typeAlimentation);
 	
-//	@Query("select t from Recette r where r.typeAlimentation= :typeAlimentation")
-//	List<Recette> findByTypeAlimentation(@Param("typeAlimentation") TypeAlimentation typeAlimentation);
+
 }
