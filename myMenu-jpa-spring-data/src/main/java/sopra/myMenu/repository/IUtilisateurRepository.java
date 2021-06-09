@@ -1,30 +1,33 @@
 package sopra.myMenu.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import sopra.myMenu.model.Adresse;
-import sopra.myMenu.model.Coordonnees;
-import sopra.myMenu.model.Magasin;
+import sopra.myMenu.model.Genre;
+import sopra.myMenu.model.PhysicalActivity;
 import sopra.myMenu.model.Utilisateur;
 
 public interface IUtilisateurRepository extends JpaRepository<Utilisateur,Long> {
 	
-	@Query("select a from Adresse a where a.magasin.id = :idMagasin")
-	List<Adresse> findAllbyMagasin(@Param("idMagasin") Magasin magasin);
+	@Query("select distinct u from Utilisateur u where u.email = :email")
+	List<Utilisateur> findAllByEmail(@Param("email") String email);
 	
-	@Query("select  a from Adresse a where a.utilisateur.id = :idUtilisateur")
-	List<Adresse> findAllbyUtilisateur(@Param("idUtilisateur") Utilisateur utilisateur);
+	@Query("select distinct u from Utilisateur u where u.telephone = :telephone")
+	List<Utilisateur> findAllByTelephone(@Param("telephone") String telephone);
 	
-	@Query("select distinct a from Adresse a where a.coordonnees = :coordonnees")
-	Optional<Adresse> findAllByCoordonnees(@Param("coordonnees") Coordonnees coordonnees);
+	@Query("select distinct u from Utilisateur u where u.imc = :imc")
+	List<Utilisateur> findAllByImc(@Param("imc") String imc);
 	
-	@Query("select distinct a from Adresse a where a.ville = :ville")
-	Optional<Adresse> findAllByVille(@Param("ville") String ville);
+	@Query("select distinct u from Utilisateur u where u.physicalActivity = :physicalActivity")
+	List<Utilisateur> findAllByPhysicalActivity(@Param("physicalActivity") PhysicalActivity physicalActivity);
 	
-
+	@Query("select distinct u from Utilisateur u where u.genre = :genre")
+	List<Utilisateur> findAllByGenre(@Param("genre") Genre genre);
+	
+	@Query("select distinct u from Utilisateur u where u.nom = :nom and u.prenom = :prenom")
+	List<Utilisateur> findAllByNomAndPrenom(@Param("nom") String nom,@Param("prenom") String prenom);
+	
 }

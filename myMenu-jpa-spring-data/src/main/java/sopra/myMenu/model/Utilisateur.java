@@ -30,6 +30,10 @@ public class Utilisateur {
 	private Float poids;
 	@Column(name = "Taille")
 	private Float taille;
+	@Column(name = "Email")
+	private String email;
+	@Column(name = "Telephone")
+	private String telephone;
 	@OneToMany(mappedBy="utilisateur")
 	private List<PreferenceAlimentaire> preferencesAlimentaires = new ArrayList<PreferenceAlimentaire>();
 	@Column(name = "Date_Naissance")
@@ -50,13 +54,17 @@ public class Utilisateur {
 		super();
 	}
 
-	public Utilisateur(String nom, String prenom, Float poids, Float taille, Date dateNaissance, Genre genre, Float imc,
-			PhysicalActivity physicalActivity) {
+	public Utilisateur(Long id, int version, String nom, String prenom, Float poids, Float taille, String email,
+			String telephone, Date dateNaissance, Genre genre, Float imc, PhysicalActivity physicalActivity) {
 		super();
+		this.id = id;
+		this.version = version;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.poids = poids;
 		this.taille = taille;
+		this.email = email;
+		this.telephone = telephone;
 		this.dateNaissance = dateNaissance;
 		this.genre = genre;
 		this.imc = imc;
@@ -177,6 +185,22 @@ public class Utilisateur {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 	
 	

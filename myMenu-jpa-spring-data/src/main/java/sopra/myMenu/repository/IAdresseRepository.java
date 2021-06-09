@@ -14,15 +14,27 @@ import sopra.myMenu.model.Utilisateur;
 
 public interface IAdresseRepository extends JpaRepository<Adresse,Long> {
 	@Query("select a from Adresse a where a.magasin.id = :idMagasin")
-	List<Adresse> findAllbyMagasin(@Param("idMagasin") Magasin magasin);
+	List<Adresse> findAllByMagasin(@Param("idMagasin") Magasin magasin);
+	
+	@Query("select a from Adresse a left join fetch a.magasin")
+	List<Adresse> findAllWithMagasin();
+	
+	@Query("select a from Adresse a left join fetch a.magasin where a.id = :id")
+	Optional<Adresse> findbyIdWithMagasin(@Param("id") Long id);
 	
 	@Query("select  a from Adresse a where a.utilisateur.id = :idUtilisateur")
-	List<Adresse> findAllbyUtilisateur(@Param("idUtilisateur") Utilisateur utilisateur);
+	List<Adresse> findAllByUtilisateur(@Param("idUtilisateur") Utilisateur utilisateur);
+	
+	@Query("select  a from Adresse a left join fetch a.utilisateur")
+	List<Adresse> findAllWithUtilisateur();
+	
+	@Query("select  a from Adresse a left join fetch a.utilisateur where a.id = :id")
+	Optional<Adresse> findByIdWithUtilisateur(@Param("id") Long id);
 	
 	@Query("select distinct a from Adresse a where a.coordonnees = :coordonnees")
-	Optional<Adresse> findAllByCoordonnees(@Param("coordonnees") Coordonnees coordonnees);
+	List<Adresse> findAllByCoordonnees(@Param("coordonnees") Coordonnees coordonnees);
 	
 	@Query("select distinct a from Adresse a where a.ville = :ville")
-	Optional<Adresse> findAllByVille(@Param("ville") String ville);
+	List<Adresse> findAllByVille(@Param("ville") String ville);
 	
 }
