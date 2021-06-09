@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper {
+	display:flex;
+	flex: 1;
+}
+
+.logoNbMenu {
+	flex: 1;
+}
+/* -------------------------------------------------------------- Header */
+
+header {
+	margin-bottom: 16px;
+}
+
+/* -------------------------------------------------------------- Boddy */
+
+.home-background {
+	text-align: center;
+	height: 100%;
+	background-image:url(../images/homePageLight.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.home-body {
+	position: absolute;
+	width: 100%;
+	top: 40%;
+}
+
+/* -------------------------------------------------------------- Bootstrap redesign voir SCSS pour plustard */
+
+.btn-success {
+	background-color: #75BB21;
+	border: none;
+}
+
+.btn-secondary {
+	background-color: #E8833A;
+	border: none;
+}
+
+/* -------------------------------------------------------------- Bootstrap redesign voir SCSS pour plustard */
+
+/* -------------------------------------------------------------- Footer Section */
+
+#footer-home {
+	width:100%;
+	position:absolute;
+	bottom:0;
+	padding: 10px 0px;
+	color: #4B5D6C;
+	background-color: #F8F9FA;
+}
+
+/* -------------------------------------------------------------- Test start */
+
+#footer-general {
+	width:100%;
+	text-align: center;
+	margin-top: 16px;
+	padding: 10px 0px;
+	color: #4B5D6C;
+	background-image:url(../images/bottom_banner_desktop.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;	
+}
+
+/* -------------------------------------------------------------- Footer logos */
+
+.footer-logo{
+	padding: 20px 16px;
+}
+
+.fa-twitter {
+	color:#4B5D6C;
+}
+
+.fa-facebook {
+	color:#4B5D6C;
+}
+
+.fa-instagram{
+	color:#4B5D6C;
+}
+
+.fa-envelope {
+	color:#4B5D6C;
+}
+
+.fa-twitter:hover {
+	color:#E8833A;
+}
+
+.fa-facebook:hover {
+	color: #E8833A;
+}
+
+.fa-instagram:hover {
+	color: #E8833A;
+}
+
+.fa-envelope:hover {
+	color:#E8833A;
+}
+
+/* -------------------------------------------------------------- Genre logos */
+
+.fa-venus{
+	color: #4B5D6C;
+	padding: 20px;
+}
+
+.fa-mars{
+	color: #4B5D6C;
+	padding: 20px;
+}
+
+.fa-venus-mars{
+	color: #4B5D6C;
+	padding: 20px;
+}
+
+.btn-venus:visited{
+	background-color:  #D3455B;
+	padding: 20px;
+	border: none;
+}
+
+.fa-mars{
+	color: #4B5D6C;
+	padding: 20px;
+}
+
+.fa-venus-mars{
+	color: #4B5D6C;
+	padding: 20px;
+}
+
+.fa-venus:hover{
+	color: #D3455B;
+}
+
+.fa-mars:hover{
+	color: #17A2B8;
+}
+
+.fa-venus-mars:hover{
+	color: #E8833A;
+}
+
+/* -------------------------------------------------------------- menuSelection Section */
+
+.listDetail {
+	
+	background-color: purple;
+
+}
+
+.listMenus {
+
+	background-color: red;
+}
+
+
