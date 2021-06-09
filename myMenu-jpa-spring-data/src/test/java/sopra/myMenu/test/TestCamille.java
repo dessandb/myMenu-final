@@ -46,7 +46,7 @@ public class TestCamille {
 			context.close();
 		}
 
-	}	
+	}	 
 
 	@Test
 	public void ajustementCreateAvecLiens() {
@@ -620,7 +620,7 @@ public class TestCamille {
 
 		magasinIngred2 = magasinIngredRepo.save(magasinIngred2);			
 
-		List<MagasinIngredient> magasinsParPrix = magasinIngredRepo.findByRisingPrice();
+		List<MagasinIngredient> magasinsParPrix = magasinIngredRepo.findAllByRisingPrice();
 		try {
 			Assert.assertEquals(magasinIngred1.getId(), magasinsParPrix.get(0).getId());
 			Assert.assertEquals(magasinIngred2.getId(), magasinsParPrix.get(1).getId());
@@ -792,7 +792,7 @@ public class TestCamille {
 
 		magasin2 = magasinRepo.save(magasin2);			
 
-		List<Magasin> magasins = magasinRepo.findByName("Leclerc");
+		List<Magasin> magasins = magasinRepo.findAllByName("Leclerc");
 		try {
 			Assert.assertEquals(magasin2.getId(), magasins.get(0).getId());
 		}finally {
@@ -823,7 +823,7 @@ public class TestCamille {
 
 		magasin2 = magasinRepo.save(magasin2);			
 
-		List<Magasin> magasins = magasinRepo.findBySiret("123456789");
+		List<Magasin> magasins = magasinRepo.findAllBySiret("123456789");
 		try {
 			Assert.assertEquals(magasin1.getId(), magasins.get(0).getId());
 		}finally {
@@ -862,7 +862,7 @@ public class TestCamille {
 		adr2.setMagasin(magasin2);
 		adr2= adresseRepo.save(adr2);
 
-		List<Magasin> magasins = magasinRepo.findByVille("LE MANS");
+		List<Magasin> magasins = magasinRepo.findAllByVille("LE MANS");
 		try {
 			Assert.assertEquals(magasin2.getId(), magasins.get(0).getId());
 		}finally {
@@ -904,7 +904,7 @@ public class TestCamille {
 		adr2.setMagasin(magasin2);
 		adr2= adresseRepo.save(adr2);
 
-		List<Magasin> magasins = magasinRepo.findByZipCode("33000");
+		List<Magasin> magasins = magasinRepo.findAllByZipCode("33000");
 		try {
 			Assert.assertEquals(magasin1.getId(), magasins.get(0).getId());
 		}finally {

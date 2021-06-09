@@ -39,10 +39,10 @@ public class MagasinIngredient {
 	@Column(name = "datePeremption")
 	@JsonView(Views.ViewCommon.class)
 	private Date datePeremption;
-	@Column(name = "produitLocal")
+	@Column(name = "produitLocal", columnDefinition = "tinyint(1)")
 	@JsonView(Views.ViewCommon.class)
 	private Boolean produitLocal;
-	@Column(name = "bio")
+	@Column(name = "bio", columnDefinition = "tinyint(1)")
 	@JsonView(Views.ViewCommon.class)
 	private Boolean bio;
 	@OneToMany(mappedBy = "magasinIngredient")

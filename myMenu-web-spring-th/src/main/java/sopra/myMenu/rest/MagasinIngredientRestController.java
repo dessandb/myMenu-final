@@ -58,7 +58,7 @@ public class MagasinIngredientRestController {
 		return magasinIngredientRepo.findAllProduitLocal();
 	}
 	
-	@GetMapping("/by-brand/{brand}")
+	@GetMapping("/by-brand/{marque}")
 	@JsonView(Views.ViewMagasinIngredient.class)
 	public List<MagasinIngredient> findByBrand(@PathVariable String marque) {
 		return magasinIngredientRepo.findByBrand(marque);
@@ -76,26 +76,10 @@ public class MagasinIngredientRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
-	
-	@GetMapping("/{id}/detail")
-	@JsonView(ViewMagasinIngredient.class)
-	public MagasinIngredient detail(@PathVariable Long id) {
-
-		Optional<MagasinIngredient> optMagasinIngredient = magasinIngredientRepo.findById(id);
-
-		if (optMagasinIngredient.isPresent()) {
-			return optMagasinIngredient.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-		}
-	}
 
 	@PostMapping("")
 	@JsonView(Views.ViewMagasinIngredient.class)
-	public MagasinIngredient create(@Valid @RequestBody MagasinIngredient magasinIngredient, BindingResult result) {
-		if (result.hasErrors()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erreur validation");
-		}
+	public MagasinIngredient create(@RequestBody MagasinIngredient magasinIngredient) {
 
 		magasinIngredient = magasinIngredientRepo.save(magasinIngredient);
 
