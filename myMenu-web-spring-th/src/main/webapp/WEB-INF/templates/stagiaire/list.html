@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>Listes des stagiaires</title>
+</head>
+
+<body>
+
+	<section layout:fragment="monContenu">
+		<div class="card mt-3">
+			<div class="card-header bg-info text-white">
+				<h2>Listes des stagiaires</h2>
+			</div>
+			<div class="card-body">
+				<table id="matiereTable" class="table table-striped">
+					<thead>
+						<tr>
+							<th>Identifiant</th>
+							<th>Civilité</th>
+							<th>Nom</th>
+							<th>Prénom</th>
+							<th>Email</th>
+							<th>Téléphone</th>
+							<th>Date de naissance</th>
+							<th>Niveau d'étude</th>
+							<th>Adresse</th>
+							<th></th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr th:each="stag : ${stagiaires}">
+							<td th:text="${stag.id}"></td>
+							<td>[[${stag.civilite?.label}]]</td>
+							<td>[[${stag.nom}]]</td>
+							<td>[[${stag.prenom}]]</td>
+							<td>[[${stag.email}]]</td>
+							<td>[[${stag.telephone}]]</td>
+							<td>[[${stag.dtNaissance}]]</td>
+							<td>[[${stag.niveauEtude}]]</td>
+							<td>[[${stag.adresse?.rue}]] [[${stag.adresse?.complement}]] [[${stag.adresse?.codePostal}]] [[${stag.adresse?.ville}]]</td>
+							<td><div class="btn-group btn-group-sm"><a class="btn btn-primary" th:href="@{/stagiaire/edit(id=${stag.id})}"><i class="fa fa-edit"></i></a><a class="btn btn-danger" th:href="@{/stagiaire/delete(id=${stag.id})}"><i class="fa fa-trash"></i></a></div></td>
+						</tr>
+					</tbody>
+					
+				</table>
+			</div>
+			<div class="card-footer">
+				<a th:href="@{/stagiaire/add}" class="btn btn-success btn-lg">
+					<i class="fa fa-plus"></i>
+				</a>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
