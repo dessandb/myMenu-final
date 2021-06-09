@@ -1,4 +1,4 @@
-package sopra.formation.rest;
+package sopra.myMenu.rest;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,59 +18,65 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.formation.model.UE;
+import sopra.formation.model.Formateur;
 import sopra.formation.model.Views;
-import sopra.formation.repository.IUERepository;
+import sopra.formation.repository.IPersonneRepository;
 
 @RestController
-@RequestMapping("/ue")
+@RequestMapping("/formateur")
 @CrossOrigin("*")
-public class UERestController {
+public class FormateurRestController {
 
 	@Autowired
-	private IUERepository ueRepo;
+	private IPersonneRepository personneRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewUE.class)
-	public List<UE> findAll() {
-		return ueRepo.findAll();
+	@JsonView(Views.ViewFormateur.class)
+	public List<Formateur> findAll() {
+		return personneRepo.findAllFormateur();
+	}
+
+	@GetMapping("/by-email/{email}")
+	@JsonView(Views.ViewFormateur.class)
+	public Formateur findByEmail(@PathVariable String email) {
+		return personneRepo.findFormateurByEmail(email);
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewUE.class)
-	public UE find(@PathVariable Long id) {
+	@JsonView(Views.ViewFormateur.class)
+	public Formateur find(@PathVariable Long id) {
 
-		Optional<UE> optUE = ueRepo.findById(id);
+		Optional<Formateur> optFormateur = personneRepo.findFormateurById(id);
 
-		if (optUE.isPresent()) {
-			return optUE.get();
+		if (optFormateur.isPresent()) {
+			return optFormateur.get();
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
 
 	@PostMapping("")
-	@JsonView(Views.ViewUE.class)
-	public UE create(@RequestBody UE ue) {
-		ue = ueRepo.save(ue);
+	@JsonView(Views.ViewFormateur.class)
+	public Formateur create(@RequestBody Formateur formateur) {
+		formateur = personneRepo.save(formateur);
 
-		return ue;
+		return formateur;
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewUE.class)
-	public UE update(@RequestBody UE ue, @PathVariable Long id) {
-		if (!ueRepo.existsById(id)) {
+	@JsonView(Views.ViewFormateur.class)
+	public Formateur update(@RequestBody Formateur formateur, @PathVariable Long id) {
+		if (!personneRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 
-		ue = ueRepo.save(ue);
+		formateur = personneRepo.save(formateur);
 
-		return ue;
+		return formateur;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		ueRepo.deleteById(id);
+		personneRepo.deleteById(id);
 	}
 }

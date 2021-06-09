@@ -1,13 +1,14 @@
-package sopra.formation.rest;
+package sopra.myMenu.rest;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,60 +17,69 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.formation.model.Evaluation;
+import sopra.formation.model.Views;
 import sopra.formation.repository.IEvaluationRepository;
+import sopra.myMenu.rest.exception.EvaluationValidationException;
 
-@Controller
+@RestController
+@RequestMapping("/evaluation")
 @CrossOrigin("*")
-public class EvaluationController {
+public class EvaluationRestController {
 
 	@Autowired
 	private IEvaluationRepository evaluationRepo;
 
-	@GetMapping("/evaluationOld")
-	@ResponseBody
+	@GetMapping("")
+	@JsonView(Views.ViewEvaluation.class)
 	public List<Evaluation> findAll() {
-		List<Evaluation> evaluations = evaluationRepo.findAll();
-
-		return evaluations;
+		return evaluationRepo.findAll();
 	}
 
-	@GetMapping("/evaluationOld/{id}")
-	public ResponseEntity<Evaluation> find(@PathVariable Long id) {
+	@GetMapping("/{id}")
+	public Evaluation find(@PathVariable Long id) {
 
 		Optional<Evaluation> optEvaluation = evaluationRepo.findById(id);
 
 		if (optEvaluation.isPresent()) {
-			return new ResponseEntity<Evaluation>(optEvaluation.get(), HttpStatus.OK);
+			return optEvaluation.get();
 		} else {
-			return new ResponseEntity<Evaluation>(HttpStatus.NOT_FOUND);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
 
-	@PostMapping("/evaluationOld")
-	public ResponseEntity<Evaluation> create(@RequestBody Evaluation evaluation) {
-		evaluation = evaluationRepo.save(evaluation);
-
-		return new ResponseEntity<Evaluation>(evaluation, HttpStatus.OK);
-	}
-
-	@PutMapping("/evaluationOld/{id}")
-	public ResponseEntity<Evaluation> update(@RequestBody Evaluation evaluation, @PathVariable Long id) {
-		if (!evaluationRepo.existsById(id)) {
-			return new ResponseEntity<Evaluation>(HttpStatus.NOT_FOUND);
+	@PostMapping("")
+	public Evaluation create(@Valid @RequestBody Evaluation evaluation, BindingResult result) {
+		if (result.hasErrors()) {
+			throw new EvaluationValidationException();
 		}
 
 		evaluation = evaluationRepo.save(evaluation);
 
-		return new ResponseEntity<Evaluation>(evaluation, HttpStatus.OK);
+		return evaluation;
 	}
 
-	@PatchMapping("/evaluationOld/{id}")
-	public ResponseEntity<Evaluation> partialUpdate(@RequestBody Map<String, Object> updates, @PathVariable Long id) {
+	@PutMapping("/{id}")
+	public Evaluation update(@RequestBody Evaluation evaluation, @PathVariable Long id) {
 		if (!evaluationRepo.existsById(id)) {
-			return new ResponseEntity<Evaluation>(HttpStatus.NOT_FOUND);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+
+		evaluation = evaluationRepo.save(evaluation);
+
+		return evaluation;
+	}
+
+	@PatchMapping("/{id}")
+	public Evaluation partialUpdate(@RequestBody Map<String, Object> updates, @PathVariable Long id) {
+		if (!evaluationRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 
 		Evaluation evaluationFind = evaluationRepo.findById(id).get();
@@ -86,13 +96,11 @@ public class EvaluationController {
 
 		evaluationFind = evaluationRepo.save(evaluationFind);
 
-		return new ResponseEntity<Evaluation>(evaluationFind, HttpStatus.OK);
+		return evaluationFind;
 	}
 
-	@DeleteMapping("/evaluationOld/{id}")
-	public ResponseEntity<Evaluation> delete(@PathVariable Long id) {
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
 		evaluationRepo.deleteById(id);
-
-		return new ResponseEntity<Evaluation>(HttpStatus.OK);
 	}
 }
