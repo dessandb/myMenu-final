@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<title>Selection des menus</title>
+</head>
+<body>
+	<!-- ---------------------------------------------------------------------------- HEADER start-->
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="home.html">MyMenu</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="#">Comment
+							ça marche ?</a></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Nos Recettes </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Les mieux notées</a> <a
+								class="dropdown-item" href="#">New !</a> <a
+								class="dropdown-item" href="#">Healthy</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Végétariennes</a> <a
+								class="dropdown-item" href="#">Vegan</a> <a
+								class="dropdown-item" href="#">Halal</a>
+						</div></li>
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0">
+					<button class="btn btn-success my-2 my-sm-0" type="submit">Connexion</button>
+				</form>
+
+			</div>
+		</nav>
+	</header>
+	<!-- ---------------------------------------------------------------------------- HEADER end -->
+	<div class="wrapper">
+
+		<section class="listDetail">
+			<div class="header logoNbMenu">
+				<h1>Panier 0/12</h1>
+			</div>
+
+			<div class="breakfastDetail">
+				<h3>Petit déjeuner : <span>2/4</span></h3>
+				<ul>
+					<li>petit déjeuner 1</li>
+					<li>petit déjeuner 1</li>
+				</ul>
+			</div>
+
+			<div class="lunchDetail">
+				<h3>Déjeuner : <span>1/4</span></h3>
+				<ul>
+					<li>déjeuner 1</li>
+				</ul>
+			</div>
+
+			<div class="dinnerDetail">
+				<h3>Dinner : <span>3/4</span></h3>
+				<ul>
+					<li>dinner 1</li>
+					<li>dinner 2</li>
+					<li>dinner 3</li>
+				</ul>
+			</div>
+			
+			<div class="btn-CheckMenu">
+				<p class="lead">
+		          <a href="liste.html" class="btn btn-lg btn-success">Générer ma liste de course !</a>
+		        </p>
+			</div>
+		</section>
+
+		<section class="listMenus">
+			<!-- Cards -->
+			<h1>Nos selections</h1>
+			<h2>Merci de sélectionner vos menus</h2>
+
+			<div id="carouselExampleIndicators" class="carousel slide"
+				data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0"
+						class="active"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				
+				<div class="carousel-inner">
+		<!-- ---------------------------------------------------------------------------- CAROUSEL SLIDE 2-->					
+					<div class="carousel-item active"> 					
+		<!-- ---------------------------------------------------------------------------- BREAKFAST -->
+						<h2 class="petitDejTitle">Petit déjeuner</h2>
+						<div class="album py-5">			
+							<div class="card-deck">
+								<div class="card">
+									<img class="card-img-top" src="images/plat6.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This is a wider card with supporting
+											text below as a natural lead-in to additional content. This
+											content is a little bit longer.</p>
+									</div>
+									
+									<div class="card-footer">
+										<div class="form-check">
+									    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="images/plat5.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This card has supporting text below
+											as a natural lead-in to additional content.</p>
+									</div>
+									<div class="card-footer">
+										<div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="images/plat7.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This is a wider card with supporting
+											text below as a natural lead-in to additional content. This
+											card has even longer content than the first to show that
+											equal height action.</p>
+									</div>
+									<div class="card-footer">
+										<div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+							</div>					
+						</div>
+		<!-- ---------------------------------------------------------------------------- BREAKFAST END-->
+					</div>
+		<!-- ---------------------------------------------------------------------------- CAROUSEL SLIDE 2-->
+					<div class="carousel-item">					
+		<!-- ---------------------------------------------------------------------------- LUNCH -->
+						<h2 class="dejeunerTitle">Déjeuner</h2>
+						<div class="album py-5">			
+							<div class="card-deck">
+								<div class="card">
+									<img class="card-img-top" src="images/plat8.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This is a wider card with supporting
+											text below as a natural lead-in to additional content. This
+											content is a little bit longer.</p>
+									</div>
+									<div class="card-footer">
+										<div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="images/plat9.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This card has supporting text below
+											as a natural lead-in to additional content.</p>
+									</div>
+									<div class="card-footer">
+										<div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="images/plat10.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This is a wider card with supporting
+											text below as a natural lead-in to additional content. This
+											card has even longer content than the first to show that
+											equal height action.</p>
+									</div>
+									<div class="card-footer">
+										<div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+							</div>					
+						</div>
+		<!-- ---------------------------------------------------------------------------- LUNCH END-->					
+					</div>
+		<!-- ---------------------------------------------------------------------------- CAROUSEL SLIDE 3-->
+					<div class="carousel-item"> 
+		<!-- ---------------------------------------------------------------------------- DINNER -->
+						<h2 class="dinnerTitle">Dinner</h2>
+						<div class="album py-5">			
+							<div class="card-deck">
+								<div class="card">
+									<img class="card-img-top" src="images/plat6.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This is a wider card with supporting
+											text below as a natural lead-in to additional content. This
+											content is a little bit longer.</p>
+									</div>
+									<div class="card-footer">
+										<div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="images/plat8.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This card has supporting text below
+											as a natural lead-in to additional content.</p>
+									</div>
+									<div class="card-footer">
+										<div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="images/plat7.jpg"
+										alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<p class="card-text">This is a wider card with supporting
+											text below as a natural lead-in to additional content. This
+											card has even longer content than the first to show that
+											equal height action.</p>
+									</div>
+									<div class="card-footer">
+										<div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+										    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+									  </div>
+									</div>
+								</div>
+							</div>					
+						</div>
+		<!-- ---------------------------------------------------------------------------- DINNER END-->	
+					</div>
+				</div>
+
+				<a class="carousel-control-prev" href="#carouselExampleIndicators"
+					role="button" data-slide="prev">
+					 <span
+					class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+					class="sr-only">Previous
+					</span>
+				</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
+					role="button" data-slide="next"> 
+					<span
+					class="carousel-control-next-icon" aria-hidden="true"></span> <span
+					class="sr-only">Next
+					</span>
+				</a>
+
+			</div>
+		</section>
+
+	</div>
+	<!-- ---------------------------------------------------------------------------- FOOTER start -->
+
+	<footer id="footer-general">
+		<span class="fab fa-twitter footer-logo"></span> <span
+			class="fab fa-facebook footer-logo"></span> <span
+			class="fab fa-instagram footer-logo"></span> <span
+			class="fas fa-envelope footer-logo"></span>
+		<p>&copy;2021 Copyright - MyMenu</p>
+	</footer>
+
+	<!-- ---------------------------------------------------------------------------- JS SCRIPTS end -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://kit.fontawesome.com/ff44a36bc1.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>

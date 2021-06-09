@@ -2,3 +2,6 @@
  * 
  */
 
+$('.carousel').carousel({
+  interval: false
+})
