@@ -191,36 +191,38 @@ rec3 = recRepo.save(rec3);
 		Assert.assertEquals(rec1.getId(), recettesParNom.get(0).getId());
 	} finally {
 		recRepo.delete(rec1);
+		recRepo.delete(rec2);
+		recRepo.delete(rec3);
 	}
 	}
-//	@Test
-//	public void findByRisingNote() {
-//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:application-context.xml");
-//		IRecetteRepository recRepo = context.getBean(IRecetteRepository.class);
-//
-//		Recette rec1 = new Recette("couscous", "mettre les legumes et le poulet", 5, 200,3F, TypeAlimentation.HALAL);
-//		
-//	Recette rec2 = new Recette("tartiflette", "patate et reblochon", 5, 800,5F, TypeAlimentation.NONE);
-//
-//	Recette rec3 = new Recette("couscous", "mettre les legumes et le poulet", 5, 10,2F, TypeAlimentation.HALAL);
-//
-//	rec1 = recRepo.save(rec1);
-//	rec2 = recRepo.save(rec2);
-//	rec3 = recRepo.save(rec3);
-//
-//
-//	List<Recette> recettesParNote = recRepo.findByRisingNote();
-//	try {
-//		Assert.assertEquals(rec1.getId(), recettesParNote.get(1).getId());
-//		Assert.assertEquals(rec2.getId(), recettesParNote.get(2).getId());
-//		Assert.assertEquals(rec3.getId(), recettesParNote.get(0).getId());
-//	}finally{
-//		recRepo.delete(rec1);
-//		recRepo.delete(rec2);
-//		recRepo.delete(rec3);
-//	}
-//	
-//}
+	@Test
+	public void findByRisingNote() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:application-context.xml");
+		IRecetteRepository recRepo = context.getBean(IRecetteRepository.class);
+
+		Recette rec1 = new Recette("couscous", "mettre les legumes et le poulet", 5, 200,3F, TypeAlimentation.HALAL);
+		
+	Recette rec2 = new Recette("tartiflette", "patate et reblochon", 5, 800,5F, TypeAlimentation.NONE);
+
+	Recette rec3 = new Recette("couscous", "mettre les legumes et le poulet", 5, 10,2F, TypeAlimentation.HALAL);
+
+	rec1 = recRepo.save(rec1);
+	rec2 = recRepo.save(rec2);
+	rec3 = recRepo.save(rec3);
+
+
+	List<Recette> recettesParNote = recRepo.findByRisingNote();
+	try {
+		Assert.assertEquals(rec1.getId(), recettesParNote.get(1).getId());
+		Assert.assertEquals(rec2.getId(), recettesParNote.get(2).getId());
+		Assert.assertEquals(rec3.getId(), recettesParNote.get(0).getId());
+	}finally{
+		recRepo.delete(rec1);
+		recRepo.delete(rec2);
+		recRepo.delete(rec3);
+	}
+	
+}
 	@Test
 	public void findByTypeAlimentation() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:application-context.xml");
@@ -230,7 +232,7 @@ rec3 = recRepo.save(rec3);
 		
 	Recette rec2 = new Recette("tartiflette", "patate et reblochon", 5, 800,5F, TypeAlimentation.NONE);
 
-	Recette rec3 = new Recette("couscous", "mettre les legumes et le poulet", 5, 10,2F, TypeAlimentation.HALAL);
+	Recette rec3 = new Recette("tartiflette", "patate et reblochon", 5, 800,2F, TypeAlimentation.NONE);
 
 	rec1 = recRepo.save(rec1);
 	rec2 = recRepo.save(rec2);
