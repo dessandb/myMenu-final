@@ -19,7 +19,7 @@ public interface IUtilisateurRepository extends JpaRepository<Utilisateur,Long> 
 	List<Utilisateur> findAllByTelephone(@Param("telephone") String telephone);
 	
 	@Query("select distinct u from Utilisateur u where u.imc = :imc")
-	List<Utilisateur> findAllByImc(@Param("imc") String imc);
+	List<Utilisateur> findAllByImc(@Param("imc") Float imc);
 	
 	@Query("select distinct u from Utilisateur u where u.physicalActivity = :physicalActivity")
 	List<Utilisateur> findAllByPhysicalActivity(@Param("physicalActivity") PhysicalActivity physicalActivity);

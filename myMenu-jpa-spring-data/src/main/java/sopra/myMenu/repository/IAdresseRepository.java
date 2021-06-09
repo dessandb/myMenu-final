@@ -9,21 +9,19 @@ import org.springframework.data.repository.query.Param;
 
 import sopra.myMenu.model.Adresse;
 import sopra.myMenu.model.Coordonnees;
-import sopra.myMenu.model.Magasin;
-import sopra.myMenu.model.Utilisateur;
 
 public interface IAdresseRepository extends JpaRepository<Adresse,Long> {
 	@Query("select a from Adresse a where a.magasin.id = :idMagasin")
-	List<Adresse> findAllByMagasin(@Param("idMagasin") Magasin magasin);
+	List<Adresse> findAllByMagasin(@Param("idMagasin") Long idMagasin);
 	
 	@Query("select a from Adresse a left join fetch a.magasin")
 	List<Adresse> findAllWithMagasin();
 	
 	@Query("select a from Adresse a left join fetch a.magasin where a.id = :id")
-	Optional<Adresse> findbyIdWithMagasin(@Param("id") Long id);
+	Optional<Adresse> findByIdWithMagasin(@Param("id") Long id);
 	
 	@Query("select  a from Adresse a where a.utilisateur.id = :idUtilisateur")
-	List<Adresse> findAllByUtilisateur(@Param("idUtilisateur") Utilisateur utilisateur);
+	List<Adresse> findAllByUtilisateur(@Param("idUtilisateur") Long idUtilisateur);
 	
 	@Query("select  a from Adresse a left join fetch a.utilisateur")
 	List<Adresse> findAllWithUtilisateur();

@@ -14,35 +14,49 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(name = "Nom")
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Column(name = "Prenom")
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 	@Column(name = "Poids_kg")
+	@JsonView(Views.ViewCommon.class)
 	private Float poids;
 	@Column(name = "Taille")
+	@JsonView(Views.ViewCommon.class)
 	private Float taille;
 	@Column(name = "Email")
+	@JsonView(Views.ViewCommon.class)
 	private String email;
 	@Column(name = "Telephone")
+	@JsonView(Views.ViewCommon.class)
 	private String telephone;
 	@OneToMany(mappedBy="utilisateur")
 	private List<PreferenceAlimentaire> preferencesAlimentaires = new ArrayList<PreferenceAlimentaire>();
 	@Column(name = "Date_Naissance")
+	@JsonView(Views.ViewCommon.class)
 	private Date dateNaissance;
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewCommon.class)
 	private Genre genre;
 	@Column(name = "IMC")
+	@JsonView(Views.ViewCommon.class)
 	private Float imc;
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewCommon.class)
 	private PhysicalActivity physicalActivity;
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Adresse> adresses = new ArrayList<Adresse>();
