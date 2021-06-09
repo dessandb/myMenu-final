@@ -13,13 +13,13 @@ import sopra.myMenu.model.TypeProduit;
 public interface IIngredientRepository extends JpaRepository<Ingredient, Long> {
 
 	@Query("select i from Ingredient i where i.nom= :nom")
-	List<Ingredient> findByName(@Param("nom") String nom);
+	Ingredient findIngredientByName(@Param("nom") String nom);
 	
 	@Query("select i from Ingredient i where i.produitSaison= :produitSaison")
-	List<Ingredient> findByProduitSaison(@Param("produitSaison") ProduitSaison produitSaison);
+	List<Ingredient> findIngredientByProduitSaison(@Param("produitSaison") ProduitSaison produitSaison);
 	
 	@Query("select i from Ingredient i where i.typeProduit= :typeProduit")
-	List<Ingredient> findByTypeProduit(@Param("typeProduit") TypeProduit typeProduit);
+	List<Ingredient> findIngredientByTypeProduit(@Param("typeProduit") TypeProduit typeProduit);
 
 	
 	

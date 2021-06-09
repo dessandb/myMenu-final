@@ -17,6 +17,9 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 
 @Entity
@@ -25,19 +28,24 @@ public class Ingredient {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(name = "nom")
+	@JsonView(Views.ViewIngredient.class)
 	private String nom;
 	@Column(name = "quantite")
+	@JsonView(Views.ViewCommon.class)
 	private Float quantite;
 	@Enumerated(EnumType.STRING)
-	//@Column(name = "type_produit")
+	@JsonView(Views.ViewIngredient.class)
 	private TypeProduit typeProduit;
 	@Enumerated(EnumType.STRING)
-	//@Column(name = "produit_saison")
+	@JsonView(Views.ViewIngredient.class)
 	private ProduitSaison produitSaison;
+	@JsonIgnore
 	@Column(name = "nombre_calories_100g")
 	private Float nombreCalories100g;
 	
