@@ -10,16 +10,21 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="ListeCourse")
 public class ListeCourse {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "AjustementQuantite_id") 
+	@JsonView(Views.ViewListeCourseWithAjustement.class)
 	private AjustementQuantite ajustementQuantite;
 	
 	public ListeCourse() {
