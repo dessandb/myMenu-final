@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,47 +44,48 @@ public class UtilisateurRestController {
 	
 	@GetMapping("/by-email/{email}")
 	@JsonView(Views.ViewUtilisateur.class)
-	public List<Utilisateur> findAllByEmail(@Param("email") String email) {
+	public List<Utilisateur> findAllByEmail(@PathVariable String email) {
 
 		return utilisateurRepo.findAllByEmail(email);
 	}
 	
 	@GetMapping("/by-telephone/{telephone}")
 	@JsonView(Views.ViewUtilisateur.class)
-	public List<Utilisateur> findAllByTelephone(@Param("telephone") String telephone) {
+	public List<Utilisateur> findAllByTelephone(@PathVariable String telephone) {
 
 		return utilisateurRepo.findAllByTelephone(telephone);
 	}
 	
 	@GetMapping("/by-imc/{imc}")
 	@JsonView(Views.ViewUtilisateur.class)
-	public List<Utilisateur> findAllByImc(@Param("imc") Float imc) {
+	public List<Utilisateur> findAllByImc(@PathVariable Float imc) {
 
 		return utilisateurRepo.findAllByImc(imc);
 	}
 	
 	@GetMapping("/by-physical-activity/{physicalActivity.label}")
 	@JsonView(Views.ViewUtilisateur.class)
-	public List<Utilisateur> findAllByPhysicalActivity(@Param("physicalActivity") PhysicalActivity physicalActivity) {
+	public List<Utilisateur> findAllByPhysicalActivity(@PathVariable PhysicalActivity physicalActivity) {
 
 		return utilisateurRepo.findAllByPhysicalActivity(physicalActivity);
 	}
 	
 	@GetMapping("/by-genre/{genre.label}")
 	@JsonView(Views.ViewUtilisateur.class)
-	public List<Utilisateur> findAllByGenre(@Param("genre") Genre genre) {
+	public List<Utilisateur> findAllByGenre(@PathVariable Genre genre) {
 
 		return utilisateurRepo.findAllByGenre(genre);
 	}
 	
 	@GetMapping("/by-nom-prenom/{nom}:{prenom}")
 	@JsonView(Views.ViewUtilisateur.class)
-	public List<Utilisateur> findAllByNomAndPrenom(@Param("nom") String nom,@Param("prenom") String prenom) {
+	public List<Utilisateur> findAllByNomAndPrenom(@PathVariable String nom,@PathVariable String prenom) {
 
 		return utilisateurRepo.findAllByNomAndPrenom(nom,prenom);
 	}
 	
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur find(@PathVariable Long id) {
 
 		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findById(id);
@@ -98,6 +98,7 @@ public class UtilisateurRestController {
 	}
 	
 	@PostMapping("")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur create(@Valid @RequestBody Utilisateur utilisateur, BindingResult result) {
 		if (result.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erreur validation");
@@ -109,6 +110,7 @@ public class UtilisateurRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur update(@RequestBody Utilisateur utilisateur, @PathVariable Long id) {
 		if (!utilisateurRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
