@@ -26,8 +26,221 @@ public class TestCamille {
 
 	////////////////////////////////////////TEST AJUSTEMENT QUANTITE/////////////////////////////////////////////
 
-	@Test
-	public void ajustementCreateSimple() {
+//	@Test
+//	public void ajustementCreateSimple() {
+//
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+//				"classpath:application-context.xml");
+//		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
+//		AjustementQuantite ajustement = new AjustementQuantite();
+//
+//		ajustement.setQuantiteModifiee(2F);	
+//
+//		ajustement = ajustementRepo.save(ajustement); 
+//
+//		AjustementQuantite ajustementFind = ajustementRepo.findById(ajustement.getId()).get();
+//		try {
+//			Assert.assertEquals((Float)2.0F, ajustementFind.getQuantiteModifiee());
+//		}finally {
+//			ajustementRepo.delete(ajustement); 		
+//			context.close();
+//		}
+//
+//	}	
+//
+//	@Test
+//	public void ajustementCreateAvecLiens() {
+//
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+//				"classpath:application-context.xml");
+//		IIngredientRepository ingredientRepo = context.getBean(IIngredientRepository.class);
+//
+//		Ingredient ingredient1 = new Ingredient();
+//		ingredient1.setNom("tomate");
+//		ingredient1.setQuantite(3F);
+//		ingredient1 = ingredientRepo.save(ingredient1);
+//
+//		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
+//		AjustementQuantite ajustement1 = new AjustementQuantite();			
+//		ajustement1.setQuantiteModifiee(2F);
+//
+//		ingredient1.setAjustementQuantite(ajustement1);
+//
+//		ajustement1 = ajustementRepo.save(ajustement1);
+//
+//		ingredient1 = ingredientRepo.save(ingredient1);
+//
+//		List<AjustementQuantite> ajustementFind = ajustementRepo.findAll();
+//		try {
+//			Assert.assertEquals((Float)2F,ajustementFind.get(0).getQuantiteModifiee());		
+//		}finally {	
+//			ingredientRepo.delete(ingredient1); 
+//			ajustementRepo.delete(ajustement1);
+//
+//			context.close();
+//		}
+//
+//	}	
+//
+//	@Test
+//	public void ajustementUpdate() {
+//
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+//				"classpath:application-context.xml");
+//		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
+//		AjustementQuantite ajustement = new AjustementQuantite();
+//
+//		ajustement.setQuantiteModifiee(2F);	
+//		ajustement = ajustementRepo.save(ajustement);
+//		AjustementQuantite ajustementFind = ajustementRepo.findById(ajustement.getId()).get();
+//
+//		ajustement.setQuantiteModifiee(6F);	
+//		ajustement = ajustementRepo.save(ajustement);
+//		ajustementFind = ajustementRepo.findById(ajustement.getId()).get();
+//		try {
+//			Assert.assertEquals((Float)6F, ajustementFind.getQuantiteModifiee());
+//		}finally {
+//			ajustementRepo.delete(ajustement);
+//
+//			context.close();
+//		}
+//
+//	}	
+//
+//	@Test
+//	public void ajustementFindAll() {
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+//				"classpath:application-context.xml");
+//		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
+//
+//		AjustementQuantite ajustement1 = new AjustementQuantite();
+//		ajustement1.setQuantiteModifiee(3F); 
+//		ajustement1 = ajustementRepo.save(ajustement1);		
+//
+//		AjustementQuantite ajustement2 = new AjustementQuantite();
+//		ajustement2.setQuantiteModifiee(6F);
+//		ajustement2 = ajustementRepo.save(ajustement2);			
+//
+//		List<AjustementQuantite> ajustements = ajustementRepo.findAll();
+//		try {
+//			Assert.assertEquals(2, ajustements.size());
+//		}finally {
+//			ajustementRepo.delete(ajustement1);
+//			ajustementRepo.delete(ajustement2);		
+//
+//			context.close();
+//		}
+//
+//	}
+//
+//	@Test
+//	public void ajustementQuantiteDelete() {
+//
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+//				"classpath:application-context.xml");
+//
+//		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
+//		AjustementQuantite ajustement1 = new AjustementQuantite();
+//		AjustementQuantite ajustement2 = new AjustementQuantite();
+//
+//		ajustement1 = ajustementRepo.save(ajustement1);
+//		ajustement2 = ajustementRepo.save(ajustement2);	
+//
+//		List<AjustementQuantite> ajustements = ajustementRepo.findAll();
+//
+//		Assert.assertEquals(2, ajustements.size());
+//
+//		ajustementRepo.delete(ajustement1);
+//		ajustementRepo.delete(ajustement2);		
+//
+//		ajustements = ajustementRepo.findAll();
+//		try {
+//			Assert.assertEquals(0, ajustements.size());
+//		}finally {
+//			ajustementRepo.delete(ajustement1);
+//			ajustementRepo.delete(ajustement2);	
+//			context.close();
+//		}
+//	}
+//
+//
+//	////////////////////////////////////////TEST LISTE COURSE/////////////////////////////////////////////
+//
+//	@Test
+//	public void listeCourseCreateAvecLien() {
+//
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+//				"classpath:application-context.xml");
+//		IIngredientRepository ingredientRepo = context.getBean(IIngredientRepository.class);
+//
+//		Ingredient ingredient1 = new Ingredient();
+//		ingredient1.setNom("tomate");
+//		ingredient1.setQuantite(3F);			
+//		ingredient1 = ingredientRepo.save(ingredient1);
+//
+//		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
+//
+//		AjustementQuantite ajustement1 = new AjustementQuantite();
+//		ajustement1.setQuantiteModifiee(2F);
+//
+//		ajustement1 = ajustementRepo.save(ajustement1);	
+//
+//		ingredient1.setAjustementQuantite(ajustement1);
+//
+//		ingredient1 = ingredientRepo.save(ingredient1);
+//
+//		IListeCourseRepository listeCourseRepo = context.getBean(IListeCourseRepository.class);
+//		ListeCourse listeCourse1 = new ListeCourse();
+//
+//		listeCourse1.setAjustementQuantite(ajustement1);
+//		listeCourse1 = listeCourseRepo.save(listeCourse1);
+//
+//		List<Ingredient> ingredients = ingredientRepo.findAll();
+//
+//		ajustement1.setIngredients(ingredients);
+//
+//		ajustement1 = ajustementRepo.save(ajustement1);
+//
+//		ListeCourse listeFind = listeCourseRepo.findById(listeCourse1.getId()).get();
+//		try {
+//			Assert.assertEquals((Float)2F,listeFind.getAjustementQuantite().getQuantiteModifiee());			
+//		}finally {
+//			listeCourseRepo.delete(listeCourse1);
+//
+//			ingredientRepo.delete(ingredient1);
+//
+//			ajustementRepo.delete(ajustement1);		
+//			context.close();
+//		}
+//	}
+//
+//	@Test
+//	public void listeCourseCreateSimple() {
+//
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+//				"classpath:application-context.xml");
+//		IListeCourseRepository listeRepo = context.getBean(IListeCourseRepository.class);
+//		ListeCourse liste1 = new ListeCourse();	
+//		ListeCourse liste2 = new ListeCourse();
+//
+//		try {
+//			liste1 = listeRepo.save(liste1);
+//		} catch(PersistenceException e) {
+//		}
+//		try {
+//			liste2 = listeRepo.save(liste2);
+//		} catch(PersistenceException e) {
+//		}
+//
+//		List<ListeCourse> listeCourses = listeRepo.findAll();
+//		try {
+//			Assert.assertEquals(2, listeCourses.size());
+//		}finally {
+//			listeRepo.delete(liste1);
+//			listeRepo.delete(liste2);
+//			context.close();
+//		}
+//	}	
 
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath:application-context.xml");
@@ -49,200 +262,6 @@ public class TestCamille {
 	}	 
 
 	@Test
-	public void ajustementCreateAvecLiens() {
-
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-				"classpath:application-context.xml");
-		IIngredientRepository ingredientRepo = context.getBean(IIngredientRepository.class);
-
-		Ingredient ingredient1 = new Ingredient();
-		ingredient1.setNom("tomate");
-		ingredient1.setQuantite(3F);
-		ingredient1 = ingredientRepo.save(ingredient1);
-
-		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
-		AjustementQuantite ajustement1 = new AjustementQuantite();			
-		ajustement1.setQuantiteModifiee(2F);
-
-		ingredient1.setAjustementQuantite(ajustement1);
-
-		ajustement1 = ajustementRepo.save(ajustement1);
-
-		ingredient1 = ingredientRepo.save(ingredient1);
-
-		List<AjustementQuantite> ajustementFind = ajustementRepo.findAll();
-		try {
-			Assert.assertEquals((Float)2F,ajustementFind.get(0).getQuantiteModifiee());		
-		}finally {	
-			ingredientRepo.delete(ingredient1); 
-			ajustementRepo.delete(ajustement1);
-
-			context.close();
-		}
-
-	}	
-
-	@Test
-	public void ajustementUpdate() {
-
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-				"classpath:application-context.xml");
-		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
-		AjustementQuantite ajustement = new AjustementQuantite();
-
-		ajustement.setQuantiteModifiee(2F);	
-		ajustement = ajustementRepo.save(ajustement);
-		AjustementQuantite ajustementFind = ajustementRepo.findById(ajustement.getId()).get();
-
-		ajustement.setQuantiteModifiee(6F);	
-		ajustement = ajustementRepo.save(ajustement);
-		ajustementFind = ajustementRepo.findById(ajustement.getId()).get();
-		try {
-			Assert.assertEquals((Float)6F, ajustementFind.getQuantiteModifiee());
-		}finally {
-			ajustementRepo.delete(ajustement);
-
-			context.close();
-		}
-
-	}	
-
-	@Test
-	public void ajustementFindAll() {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-				"classpath:application-context.xml");
-		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
-
-		AjustementQuantite ajustement1 = new AjustementQuantite();
-		ajustement1.setQuantiteModifiee(3F); 
-		ajustement1 = ajustementRepo.save(ajustement1);		
-
-		AjustementQuantite ajustement2 = new AjustementQuantite();
-		ajustement2.setQuantiteModifiee(6F);
-		ajustement2 = ajustementRepo.save(ajustement2);			
-
-		List<AjustementQuantite> ajustements = ajustementRepo.findAll();
-		try {
-			Assert.assertEquals(2, ajustements.size());
-		}finally {
-			ajustementRepo.delete(ajustement1);
-			ajustementRepo.delete(ajustement2);		
-
-			context.close();
-		}
-
-	}
-
-	@Test
-	public void ajustementQuantiteDelete() {
-
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-				"classpath:application-context.xml");
-
-		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
-		AjustementQuantite ajustement1 = new AjustementQuantite();
-		AjustementQuantite ajustement2 = new AjustementQuantite();
-
-		ajustement1 = ajustementRepo.save(ajustement1);
-		ajustement2 = ajustementRepo.save(ajustement2);	
-
-		List<AjustementQuantite> ajustements = ajustementRepo.findAll();
-
-		Assert.assertEquals(2, ajustements.size());
-
-		ajustementRepo.delete(ajustement1);
-		ajustementRepo.delete(ajustement2);		
-
-		ajustements = ajustementRepo.findAll();
-		try {
-			Assert.assertEquals(0, ajustements.size());
-		}finally {
-			ajustementRepo.delete(ajustement1);
-			ajustementRepo.delete(ajustement2);	
-			context.close();
-		}
-	}
-
-
-	////////////////////////////////////////TEST LISTE COURSE/////////////////////////////////////////////
-
-	@Test
-	public void listeCourseCreateAvecLien() {
-
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-				"classpath:application-context.xml");
-		IIngredientRepository ingredientRepo = context.getBean(IIngredientRepository.class);
-
-		Ingredient ingredient1 = new Ingredient();
-		ingredient1.setNom("tomate");
-		ingredient1.setQuantite(3F);			
-		ingredient1 = ingredientRepo.save(ingredient1);
-
-		IAjustementQuantiteRepository ajustementRepo = context.getBean(IAjustementQuantiteRepository.class);
-
-		AjustementQuantite ajustement1 = new AjustementQuantite();
-		ajustement1.setQuantiteModifiee(2F);
-
-		ajustement1 = ajustementRepo.save(ajustement1);	
-
-		ingredient1.setAjustementQuantite(ajustement1);
-
-		ingredient1 = ingredientRepo.save(ingredient1);
-
-		IListeCourseRepository listeCourseRepo = context.getBean(IListeCourseRepository.class);
-		ListeCourse listeCourse1 = new ListeCourse();
-
-		listeCourse1.setAjustementQuantite(ajustement1);
-		listeCourse1 = listeCourseRepo.save(listeCourse1);
-
-		List<Ingredient> ingredients = ingredientRepo.findAll();
-
-		ajustement1.setIngredients(ingredients);
-
-		ajustement1 = ajustementRepo.save(ajustement1);
-
-		ListeCourse listeFind = listeCourseRepo.findById(listeCourse1.getId()).get();
-		try {
-			Assert.assertEquals((Float)2F,listeFind.getAjustementQuantite().getQuantiteModifiee());			
-		}finally {
-			listeCourseRepo.delete(listeCourse1);
-
-			ingredientRepo.delete(ingredient1);
-
-			ajustementRepo.delete(ajustement1);		
-			context.close();
-		}
-	}
-
-	@Test
-	public void listeCourseCreateSimple() {
-
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-				"classpath:application-context.xml");
-		IListeCourseRepository listeRepo = context.getBean(IListeCourseRepository.class);
-		ListeCourse liste1 = new ListeCourse();	
-		ListeCourse liste2 = new ListeCourse();
-
-		try {
-			liste1 = listeRepo.save(liste1);
-		} catch(PersistenceException e) {
-		}
-		try {
-			liste2 = listeRepo.save(liste2);
-		} catch(PersistenceException e) {
-		}
-
-		List<ListeCourse> listeCourses = listeRepo.findAll();
-		try {
-			Assert.assertEquals(2, listeCourses.size());
-		}finally {
-			listeRepo.delete(liste1);
-			listeRepo.delete(liste2);
-			context.close();
-		}
-	}	
-
-	@Test
 	public void listeCourseUpdate() {
 
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
@@ -258,9 +277,10 @@ public class TestCamille {
 		AjustementQuantite ajustement = new AjustementQuantite();
 
 		ajustement.setQuantiteModifiee(2F);
-		ingredient.setAjustementQuantite(ajustement);
-
 		ajustement = ajustementRepo.save(ajustement);
+		
+		ingredient.setAjustementQuantite(ajustement);
+		
 		ingredient = ingredientRepo.save(ingredient);				
 
 		IListeCourseRepository listeCourseRepo = context.getBean(IListeCourseRepository.class);
@@ -270,9 +290,10 @@ public class TestCamille {
 		listeCourse = listeCourseRepo.save(listeCourse);
 
 		ajustement.setQuantiteModifiee(6F);
+		ajustement = ajustementRepo.save(ajustement);
 		ingredient.setAjustementQuantite(ajustement);
 
-		ajustement = ajustementRepo.save(ajustement);
+		
 		ingredient = ingredientRepo.save(ingredient);		
 
 		listeCourse.setAjustementQuantite(ajustement);
@@ -282,9 +303,9 @@ public class TestCamille {
 		try {
 			Assert.assertEquals(listeCourse.getAjustementQuantite().getQuantiteModifiee(),listeFind.getAjustementQuantite().getQuantiteModifiee());
 		}finally {
-			listeCourseRepo.delete(listeCourse);
-			ingredientRepo.delete(ingredient);		
-			ajustementRepo.delete(ajustement);
+//			listeCourseRepo.delete(listeCourse);
+//			ingredientRepo.delete(ingredient);		
+//			ajustementRepo.delete(ajustement);
 			context.close();
 		}
 	}	
